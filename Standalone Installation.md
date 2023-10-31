@@ -68,8 +68,7 @@ npm i
 ## let's move it to "sepolia-agent-standalone/keys/" and delete the file that says "yourkeygoeshere"..
 ## Don't forget to correct the necessary places in the following file and change the Worker Address and Password, save and exit ( CTRL+X y enter)
 
-## IMPORTANT NOTE: The RPC you use will not be public as it has been prohibited by the Power Pool team. You have two options: either set up a separate VPS with
-## a Sepolia ETH Full Node and obtain an RPC from there, or purchase a private RPC at a cost. Those using public RPCs will not be eligible for rewards.
+## IMPORTANT NOTE: The RPC you use will not be public as it has been prohibited by the Power Pool team. You have two options: either set up a separate VPS with a Sepolia ETH Full Node and obtain an RPC from there, or purchase a private RPC at a cost. Those using public RPCs will not be eligible for rewards.
 ```console
 nano sepolia-agent-standalone/config/main.yaml
 
