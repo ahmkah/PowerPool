@@ -1,4 +1,4 @@
-<h1 align="center"> Power Pool </h1>
+<h1 align="center"> Power Argent Standalone Installation </h1>
 
 
 
@@ -108,15 +108,29 @@ docker logs sepolia-agent-standalone-bot-1 >& powerargentlogfile.log
 
 ```
 
+<h1 align="center"> Power Argent Standalone Update </h1>
 
+# STEP-1, first we update the powerargent repo
 
+```console
+cd sepolia-agent-standalone
+git pull
+npm i
+```
 
+# STEP-2, delete the docker container, enter the following command:
+```console
 
+docker compose down --rmi local
+```
 
+# STEP-3, Now We will Run the Node:
+```console
 
+docker-compose pull
 
-
-
+docker compose up -d
+```
 
 
 
