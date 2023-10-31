@@ -5,7 +5,7 @@
 
 # My VPS:
 2CPU - 4 RAM - 80 SSD
-Ubuntuya 22.04 
+Ubuntu 22.04 
 
 
 
