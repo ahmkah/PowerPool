@@ -1,20 +1,20 @@
 <h1 align="center"> Power Pool </h1>
 
-> Eğer seçildiyseniz ve token aldıysanız bu floodu kullanın aksi taktirde vakit kaybıdır
+
 
 ```console
-# Benim cihazım:
+# My VPS:
 2CPU - 4 RAM - 80 SSD
 Ubuntuya 22.04 
 ```
 
 ```console
-# ADIM-1, Sunucumuzu güncelleyelim:
+# STEP-1, Let's update our server:
 sudo apt-get update && sudo apt-get upgrade -y
 ```
 
 ```console
-# ADIM-2, Docker ve Docker Compose Kuruyoruz (tek tek giriniz):
+# STEP-2, Docker and Docker Compose installing (enter the commands one by one):
 
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
 
@@ -40,39 +40,42 @@ docker-compose --version
 ```
 
 ```console
-# ADIM-3, Gerekli paketleri indirelim:
+# STEP-3, Let's download the necessary packages:
 sudo apt install git
 sudo apt install nodejs
 sudo apt install npm
 ```
 
 ```console
-# ADIM-4, sepolia-agent-standalone klonlayalım:
+# STEP-4, Let's clone sepolia-agent-standalone:
 git clone https://github.com/eitelvolkerts/sepolia-agent-standalone
 ```
 
 ```console
-# ADIM-5, agent'i klonlayalım:
+# STEP-5,Let's clone the Power Agent:
 git clone https://github.com/powerpool-finance/powerpool-agent-v2-compose
 cd powerpool-agent-v2-compose
 npm i
 ```
 
 ```console
-# ADIM-6, PowerArgent yedek aldığımız  UTC--2023-08-18T09-32-40.364Z--8ccf..... dosyamızı Winscp tarzı bir uygulama ile
-> "sepolia-agent-standalone/keys/" içine taşıyalım ve "yourkeygoeshere" yazan dosyayı silelim..
-> Aşağıdaki dosyada gerekli yerleri düzeltip Worker Adres ve Şifreyi değiştirmeyi unutmayın, kaydedip çıkıyoruz ( CTRL+X y enter)
+# STEP-6, UTC--2023-08-18T09-32-40.364Z--8ccf, from which we received the PowerArgent backup..... our file with a Winscp-style application
+> let's move it to "sepolia-agent-standalone/keys/" and delete the file that says "yourkeygoeshere"..
+> Don't forget to correct the necessary places in the following file and change the Worker Address and Password, save and exit ( CTRL+X y enter)
+
+# IMPORTANT NOTE: The RPC you use will not be public as it has been prohibited by the Power Pool team. You have two options: either set up a separate VPS with
+a Sepolia ETH Full Node and obtain an RPC from there, or purchase a private RPC at a cost. Those using public RPCs will not be eligible for rewards.
 
 nano sepolia-agent-standalone/config/main.yaml
 
-> rpc: 'wss://sepolia-geth-ws.863d6819366102aa.dyndns.dappnode.io'
+> rpc: 'wss://sepolia-geth-XXXXXXXX'
 > agents:
 >           '0xbdE2Aed54521000DC033B67FB522034e0F93A7e5':
 ```
 ![image](https://github.com/ahmkah/PowerPool/assets/99053148/af846c7d-001a-4752-90c2-892795e1fa26)
 
 ```console
-# ADIM-7, Şimdi Nodu Çalıştıracağız:
+# STEP-7, Now We will Run the Node:
 
 cd sepolia-agent-standalone
 
@@ -80,18 +83,18 @@ docker-compose pull
 
 docker compose up -d
 
-# Docker cont. silmek için aşağıdaki komut giriyoruz:
+# To delete the docker container, enter the following command:
 
 docker compose down --rmi local
 ```
 
 ```console
-# ADIM-8, Log kontrolü yapalım:
+# STEP-8, Let's do a Log check:
 
 docker logs -f sepolia-agent-standalone-bot-1
 ```
 ```console
-# ADIM-9, Log dosyasını kaydetmek için aşağıdaki komudu girin:
+# STEP-9, Enter the command below to save the Log file:
 
 docker logs sepolia-agent-standalone-bot-1 >& powerargentlogfile.log
 
